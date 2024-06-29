@@ -1,0 +1,14 @@
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "my_library"
+dynamic = ["version"]
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pyarrow", "pytest"]
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
