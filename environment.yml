@@ -1,0 +1,13 @@
+name: my-library
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - ipykernel
+  - ipython
+  - python>=3.8,<3.13
+  - pip
+  - maturin[patchelf]
+  - pip:
+      - pyarrow
+      - pytest
