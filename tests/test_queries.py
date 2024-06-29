@@ -20,5 +20,5 @@ def test_array_agg(simple_products_table):
         name="table",
         dataset=pda.dataset(simple_products_table),
     )
-    query = "SELECT * FROM table"
+    query = "SELECT * FROM 'table'"
     ctx.sql(query)
