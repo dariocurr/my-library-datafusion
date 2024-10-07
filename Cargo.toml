@@ -4,11 +4,16 @@ version = "0.1.0"
 edition = "2021"
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = [
+    "cdylib",
+]
 
 [dependencies]
-datafusion-python = "38.0.1"
+datafusion = "42.0"
+datafusion-python = { git = "https://github.com/apache/datafusion-python" }
 
 [dependencies.pyo3]
-version = "0.20"
-features = ["abi3-py38"]
+version = "0.22"
+features = [
+    "abi3-py38",
+]

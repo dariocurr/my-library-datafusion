@@ -5,22 +5,22 @@ import pytest
 
 
 @pytest.fixture
-def simple_products_table():
+def simple_values_arrow():
     return pa.Table.from_pydict(
         {
             "id": [0, 1, 2],
-            "products": [["A"], ["B"], ["C"]],
+            "values": [1.0, 2.0, 3.0],
         },
     )
 
 
-def test_array_agg(simple_products_table: pa.Table):
+def test_udf(simple_values_arrow: pa.Table):
     ctx = my_library.get_py_context()
     name = "table"
     ctx.register_dataset(
         name=name,
-        dataset=pda.dataset(simple_products_table),
+        dataset=pda.dataset(simple_values_arrow),
     )
-    query = f"SELECT * FROM '{name}'"
+    query = f"SELECT add_42(values) FROM '{name}'"
     result = ctx.sql(query)
     assert result
